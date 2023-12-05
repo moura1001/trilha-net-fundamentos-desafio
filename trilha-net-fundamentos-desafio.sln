@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioFundamentos", "DesafioFundamentos\DesafioFundamentos.csproj", "{CA415225-49B5-4E3F-9044-3826395723A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstacionamentoTests", "EstacionamentoTests\EstacionamentoTests.csproj", "{B3A7D715-1B70-4294-BB0D-325ADE75F9AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA415225-49B5-4E3F-9044-3826395723A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA415225-49B5-4E3F-9044-3826395723A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA415225-49B5-4E3F-9044-3826395723A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA415225-49B5-4E3F-9044-3826395723A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A7D715-1B70-4294-BB0D-325ADE75F9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A7D715-1B70-4294-BB0D-325ADE75F9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A7D715-1B70-4294-BB0D-325ADE75F9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A7D715-1B70-4294-BB0D-325ADE75F9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07E58441-A9DC-4965-9EC7-43DE7C4F4A66}
+	EndGlobalSection
+EndGlobal
