@@ -1,4 +1,5 @@
 ﻿using DesafioFundamentos.Services;
+using DesafioFundamentos.Utils;
 
 // Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -10,10 +11,10 @@ try
 {
     Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
                   "Digite o preço inicial:");
-    precoInicial = Convert.ToDecimal(Console.ReadLine());
+    precoInicial = Convert.ToDecimal(UserInputHandler.ReadNatural());
 
     Console.WriteLine("Agora digite o preço por hora:");
-    precoPorHora = Convert.ToDecimal(Console.ReadLine());
+    precoPorHora = Convert.ToDecimal(UserInputHandler.ReadNatural());
 }
 catch (Exception e)
 {

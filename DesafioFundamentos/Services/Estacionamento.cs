@@ -1,6 +1,7 @@
 using DesafioFundamentos.Models;
 using EstacionamentoModel = DesafioFundamentos.Models.Estacionamento;
 using DesafioFundamentos.Utils.Errors;
+using DesafioFundamentos.Utils;
 
 namespace DesafioFundamentos.Services
 {
@@ -50,20 +51,11 @@ namespace DesafioFundamentos.Services
                 {
                     Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
-                    int horas;
-                    string quantidadeHoras = Console.ReadLine();
-                    bool isValidHoras = int.TryParse(quantidadeHoras, out horas) && horas > 0;
-                    if (isValidHoras)
-                    {
-                        decimal valorTotal = estacionamento.CalcularPrecoTotalAPagar(horas); 
+                    int horas = UserInputHandler.ReadNatural();
+                    decimal valorTotal = estacionamento.CalcularPrecoTotalAPagar(horas); 
 
-                        estacionamento.RemoverVeiculo(placa);
-                        Console.WriteLine($"O veículo {placa} foi removido e o preço total a pagar foi de: R$ {valorTotal}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Erro ao remover veículo: quantidade de horas {quantidadeHoras} é um valor inválido");
-                    }
+                    estacionamento.RemoverVeiculo(placa);
+                    Console.WriteLine($"O veículo {placa} foi removido e o preço total a pagar foi de: R$ {valorTotal}");
                 }
                 else
                 {

@@ -24,7 +24,7 @@ namespace DesafioFundamentos.Models
         {
             if (!EhPlacaValida(placa))
             {
-                throw new EstacionamentoException($"placa {placa} é inválida");
+                throw new EstacionamentoException($"placa '{placa}' é inválida");
             }
             return veiculos.FindIndex(x => x.Equals(placa, StringComparison.OrdinalIgnoreCase));
         }
@@ -38,7 +38,7 @@ namespace DesafioFundamentos.Models
                 return;
             }
 
-            throw new EstacionamentoException($"veículo de placa {placa} já está estacionado");
+            throw new EstacionamentoException($"veículo de placa '{placa}' já está estacionado");
         }
 
         public void RemoverVeiculo(string placa)
@@ -52,7 +52,7 @@ namespace DesafioFundamentos.Models
                 return;
             }
 
-            throw new EstacionamentoException($"veículo de placa {placa} não está no estacionamento");
+            throw new EstacionamentoException($"veículo de placa '{placa}' não está no estacionamento");
         }
 
         public List<string> ObterVeiculosEstacionados()
