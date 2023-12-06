@@ -31,29 +31,44 @@ namespace DesafioFundamentos.Services
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
 
-            // Pedir para o usuário digitar a placa e armazenar na variável placa
-            // *IMPLEMENTE AQUI*
-            string placa = "";
+            string placa;
+            bool existeVeiculo = false;
+            
+            placa = Console.ReadLine();
 
-            // Verifica se o veículo existe
-            if (estacionamento.ExisteVeiculo(placa))
+            try
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-
-                // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
-                // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
-                // *IMPLEMENTE AQUI*
-                int horas = 0;
-                decimal valorTotal = 0; 
-
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
-
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
+                existeVeiculo = estacionamento.ExisteVeiculo(placa) >= 0;
             }
-            else
+            catch (EstacionamentoException)
             {
-                Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+            }
+            finally
+            {
+                // Verifica se o veículo existe
+                if (existeVeiculo)
+                {
+                    Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
+
+                    int horas;
+                    string quantidadeHoras = Console.ReadLine();
+                    bool isValidHoras = int.TryParse(quantidadeHoras, out horas) && horas > 0;
+                    if (isValidHoras)
+                    {
+                        decimal valorTotal = estacionamento.CalcularPrecoTotalAPagar(horas); 
+
+                        estacionamento.RemoverVeiculo(placa);
+                        Console.WriteLine($"O veículo {placa} foi removido e o preço total a pagar foi de: R$ {valorTotal}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Erro ao remover veículo: quantidade de horas {quantidadeHoras} é um valor inválido");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+                }
             }
         }
 

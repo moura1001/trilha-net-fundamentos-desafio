@@ -20,19 +20,19 @@ namespace DesafioFundamentos.Models
             return Regex.IsMatch(placa, "^[a-zA-Z]{3}[0-9][a-zA-Z][0-9]{2}$|^[a-zA-Z]{3}[0-9]{4}$");
         }
         
-        public bool ExisteVeiculo(string placa)
+        public int ExisteVeiculo(string placa)
         {
             if (!EhPlacaValida(placa))
             {
                 throw new EstacionamentoException($"placa {placa} é inválida");
             }
-            return veiculos.Any(x => x.ToUpper().Equals(placa.ToUpper()));
+            return veiculos.FindIndex(x => x.Equals(placa, StringComparison.OrdinalIgnoreCase));
         }
 
         public void AdicionarVeiculo(string placa)
         {
             // Verifica se o veículo existe
-            if (!ExisteVeiculo(placa))
+            if (ExisteVeiculo(placa) < 0)
             {
                 veiculos.Add(placa);
                 return;
@@ -41,23 +41,28 @@ namespace DesafioFundamentos.Models
             throw new EstacionamentoException($"veículo de placa {placa} já está estacionado");
         }
 
-        public bool RemoverVeiculo(string placa)
+        public void RemoverVeiculo(string placa)
         {
             // Verifica se o veículo existe
-            if (ExisteVeiculo(placa))
+            int index = ExisteVeiculo(placa);
+            
+            if (index >= 0)
             {
-                // TODO: Remover a placa digitada da lista de veículos
-                // *IMPLEMENTE AQUI*
-
-                return true;
+                veiculos.RemoveAt(index);
+                return;
             }
 
-            throw new EstacionamentoException($"veículo {placa} não está no estacionamento");
+            throw new EstacionamentoException($"veículo de placa {placa} não está no estacionamento");
         }
 
         public List<string> ObterVeiculosEstacionados()
         {
             return new List<string>(veiculos);
+        }
+
+        public decimal CalcularPrecoTotalAPagar(int horasEstacionado)
+        {
+            return precoInicial + precoPorHora * horasEstacionado;
         }
     }
 }
