@@ -75,11 +75,14 @@ namespace DesafioFundamentos.Services
         public void ListarVeiculos()
         {
             // Verifica se há veículos no estacionamento
-            if (estacionamento.ObterVeiculosEstacionados().Count > 0)
+            var veiculos = estacionamento.ObterVeiculosEstacionados();
+            if (veiculos.Count > 0)
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                foreach (var veiculo in veiculos)
+                {
+                    Console.WriteLine(veiculo);
+                }
             }
             else
             {
